@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deletePost } from '../actions/postActions'
+import { deletePost } from '../actions'
 class Post extends Component {
   handleClick = () => {
-    this.props.deletePost(this.props.post.id);
+    this.props.deletePost(this.props.post._id);
     this.props.history.push('/');
   }
   render() {
@@ -32,7 +32,7 @@ class Post extends Component {
 const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.post_id;
   return {
-    post: state.posts.find(post => post.id === id)
+    post: state.posts.find(post => post._id === id)
   };
 };
 

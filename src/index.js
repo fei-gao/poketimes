@@ -11,7 +11,7 @@ import { fetchAllPosts } from './actions/index';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-store.dispatch(featchAllPosts());
+store.dispatch(fetchAllPosts());
 
 ReactDOM.render(
   <Provider store={store}>
