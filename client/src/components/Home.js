@@ -5,59 +5,40 @@ import { connect } from "react-redux";
 import { getPost } from "../actions/postActions"
 
 class Home extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getPost();
-    console.log("component will mount")
   }
-  // render() {
-  //   console.log("render", this.props);
-  //   const { posts } = this.props;
-  //   const postList = posts.length ? (
-  //     posts.data.map(post => {
-  //       return (
-  //         <div className="post card" key={post.id}>
-  //           <img src={Pokeball} alt="A pokeball" />
-  //           <div className="card-content">
-  //             <Link to={"/" + post.id}>
-  //               <span className="card-title red-text">{post.title}</span>
-  //             </Link>
-  //             <p>{post.body}</p>
-  //           </div>
-  //         </div>
-  //       );
-  //     })
-  //   ) : (
-  //       <div className="center"> No posts yet </div>
-  //     );
-  //   return (
-  //     <div className="container home">
-  //       <h4 className="center">Home</h4>
-  //       {postList}
-  //     </div>
-  //   );
-  // }
   render() {
-    console.log(this.props.posts)
+    console.log(this.props);
+    const posts = this.props.posts.data;
+    const postList = posts && posts.map(post => {
+      return (
+        <div className="post card" key={post.id}>
+          <img src={Pokeball} alt="A pokeball" />
+          <div className="card-content">
+            <Link to={"/" + post.id}>
+              <span className="card-title red-text">{post.title}</span>
+            </Link>
+            <p>{post.body}</p>
+          </div>
+        </div>
+      );
+    })
     return (
-      <div>
-        <h2>Posts</h2>
-        <ul>
-          {this.props.posts && this.props.posts.map(post =>
-            <li key={post.id}>{post.title} {post.body}</li>
-          )}
-        </ul>
+      <div className="container home">
+        <h4 className="center">Home</h4>
+        {postList}
       </div>
-    )
+    );
   }
 }
-
 
 const mapStateToProps = (state) => ({
   posts: state.posts
 })
 
-const dispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   getPost: () => dispatch(getPost())
 })
 
-export default connect(mapStateToProps, dispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
