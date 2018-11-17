@@ -7,25 +7,53 @@ import { getPost } from "../actions/postActions"
 class Home extends Component {
   componentWillMount() {
     this.props.getPost();
+    console.log("component will mount")
   }
-
+  // render() {
+  //   console.log("render", this.props);
+  //   const { posts } = this.props;
+  //   const postList = posts.length ? (
+  //     posts.data.map(post => {
+  //       return (
+  //         <div className="post card" key={post.id}>
+  //           <img src={Pokeball} alt="A pokeball" />
+  //           <div className="card-content">
+  //             <Link to={"/" + post.id}>
+  //               <span className="card-title red-text">{post.title}</span>
+  //             </Link>
+  //             <p>{post.body}</p>
+  //           </div>
+  //         </div>
+  //       );
+  //     })
+  //   ) : (
+  //       <div className="center"> No posts yet </div>
+  //     );
+  //   return (
+  //     <div className="container home">
+  //       <h4 className="center">Home</h4>
+  //       {postList}
+  //     </div>
+  //   );
+  // }
   render() {
-    console.log(this.props)
+    console.log(this.props.posts)
     return (
       <div>
-        <h2>Customers</h2>
+        <h2>Posts</h2>
         <ul>
-          {this.props.customers.data && this.props.customers.data.map(customer =>
-            <li key={customer.id}>{customer.firstName} {customer.lastName}</li>
+          {this.props.posts && this.props.posts.map(post =>
+            <li key={post.id}>{post.title} {post.body}</li>
           )}
         </ul>
       </div>
-    );
+    )
   }
 }
 
+
 const mapStateToProps = (state) => ({
-  customers: state.customers
+  posts: state.posts
 })
 
 const dispatchToProps = (dispatch) => ({
@@ -33,42 +61,3 @@ const dispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, dispatchToProps)(Home);
-
-
-
-//   render() {
-//     console.log(this.props);
-//     const { posts } = this.props;
-//     const postList = posts.length ? (
-//       posts.map(post => {
-//         return (
-//           <div className="post card" key={post.id}>
-//             <img src={Pokeball} alt="A pokeball" />
-//             <div className="card-content">
-//               <Link to={"/" + post.id}>
-//                 <span className="card-title red-text">{post.title}</span>
-//               </Link>
-//               <p>{post.body}</p>
-//             </div>
-//           </div>
-//         );
-//       })
-//     ) : (
-//         <div className="center"> No posts yet </div>
-//       );
-//     return (
-//       <div className="container home">
-//         <h4 className="center">Home</h4>
-//         {postList}
-//       </div>
-//     );
-//   }
-// }
-
-// const mapStateToProps = state => {
-//   return {
-//     posts: state.posts
-//   };
-// };
-
-// export default connect(mapStateToProps)(Home);

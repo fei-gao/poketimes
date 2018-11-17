@@ -1,4 +1,4 @@
-const customerReducer = (state = [], { type, payload }) => {
+const postReducer = (state = [], { type, payload }) => {
   switch (type) {
     case 'GET_POST':
       return payload
@@ -7,4 +7,4 @@ const customerReducer = (state = [], { type, payload }) => {
   }
 }
 
-export default customerReducer;
+export default postReducer;

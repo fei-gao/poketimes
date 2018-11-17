@@ -11,6 +11,9 @@ export const deletePost = (id) => {
 }
 
 export const getPost = () => dispatch => {
-  return axios('/api/customers')
-    .then(customers => dispatch({ type: 'GET_POST', payload: customers }))
+  return axios('/api/posts')
+    .then(posts => dispatch({
+      type: 'GET_POST',
+      payload: posts
+    }))
 }
