@@ -19,6 +19,7 @@ class NewPost extends Component {
       this.props.onAddPost(this.state);
       this.handleReset();
     }
+    this.props.history.push('/')
   };
 
   handleReset = () => {
