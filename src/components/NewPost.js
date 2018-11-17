@@ -16,6 +16,7 @@ class NewPost extends Component {
     e.preventDefault();
     if (this.state.title.trim() && this.state.body.trim()) {
       console.log(this.state);
+      this.props.onAddPost(this.state);
       this.handleReset();
     }
   };
