@@ -9,7 +9,6 @@ class Home extends Component {
     this.props.getPost();
   }
   render() {
-    console.log(this.props);
     const posts = this.props.posts.data;
     const postList = posts && posts.map(post => {
       return (

@@ -4,6 +4,7 @@ import { deletePost } from '../actions/postActions'
 class Post extends Component {
   handleClick = () => {
     this.props.deletePost(this.props.post.id);
+    // redirect user to home page
     this.props.history.push('/');
   }
   render() {
