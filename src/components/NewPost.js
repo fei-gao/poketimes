@@ -15,11 +15,10 @@ class NewPost extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.title.trim() && this.state.body.trim()) {
-      console.log(this.state);
       this.props.onAddPost(this.state);
       this.handleReset();
+      this.props.history.push('/')
     }
-    this.props.history.push('/')
   };
 
   handleReset = () => {
