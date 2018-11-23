@@ -45,7 +45,7 @@ class NewPost extends Component {
             </div>
             <div className="input-field center">
               <button className="btn red darken-4">Submit</button>
-              <button className="btn red darken-5" onClick={this.handleReset}>Reset</button>
+              <button className="btn red darken-3" onClick={this.handleReset}>Reset</button>
             </div>
           </form>
         </div>
